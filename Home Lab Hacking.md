@@ -9,7 +9,7 @@ time: 12:47
 	- Ones you have both of the machines running, you can run this nmap command `nmap -sT 10.38.100-110`. The IP should be the one that you put when you set up the internal network. The `-sT` command is used to scan TCP connect port using a 3 way handshake. 
 	- If you want to be a little more sneaky since using a 3 way handshake establishes a connection you can use `-sS` instead which will not establish a connection and just peace out once it receives a SNY ACK which is a response from the server.
 	- Once you scan it you should be able to see this
-	![[Nmap-Scan.png]]
+	![500](Nmap-Scan.png)
 	- As you can see these are the ports that available
 		- 22/tcp which is ssh (Secure Shell) which is a way to remotely connect to this server. As you can see its closed so we are unable to connect to in remotely
 		- 80/tcp which is http (Hypertext Transfer Protocol) which is the port used to send and receive web applications. And its open
@@ -19,7 +19,7 @@ time: 12:47
 				- https -  is the same as http but its more secure. Every traffic that's send through it is encrypted making the port that we use today for web pages.
 		- Since port 80 and 443 are open we should be able to connect to it trough a web page.
 		- When you type in the IP address of the vuln machine in the web browser on the main machine you will get this.
-		 ![[Web-application.png]]
+		 ![500](Web-application.png)
 		- ## Attempt 1: Success
 			- The first thing I did was try running all the commands that it tell me to run
 			- Its should be obvious that the last command `join` will be the next step. When you type in the command `join` it asks for an email. The first thing I checked was if it has a way to check the format what the of the email that is being input, and there is. If you input anything things that isn't in the format of an email address it says invalid input.
@@ -33,13 +33,13 @@ time: 12:47
 					- But I didn't really know how dirbuster worked and I just left the options as default so the results of running dirbuster gave me a bunch of different dir and files that I didn't know how to look through. After this I thought there were no hidden dir or files and moved on to options.
 					- After that failure I thought about doing SQLi but what ever I tried it didn't seam to work
 					- So after being stuck for some time I thought about looking at some hints that were online and the first thing I saw was this
-					 ![[dirbuster-fail.png]]
+					 ![500](dirbuster-fail.png)
 					- After seeing this I just stopped and stared at it wishing I had just downloaded gobuster.
 					- After this fail I went back to dirbuster and tried again changing the options as well.
 					- This was the settings that put on dirbuster
-					![[dirbuster.png]]
+					![500](dirbuster.png)
 					- And lo and behold `robots.txt` is right there and an extra file names `license.txt`
-					 ![[dirbuster-result.png]]
+					![500](dirbuster-result.png)
 					- And by opening `robots.txt` it gives you two files `fsocity.dic` and `key-1-of-3.txt`. If I had a more extensive wordlist I might have been able to go to `key-1-of-3.txt` with out the need for `robots.txt`. Opening `key-1-of-3.txt` gives me the first key. Great!
 		- ## Attempt 3: 
 			- We have the `license.txt` file but I feel like we will need to come back to this later.

@@ -24,9 +24,11 @@ time: 11:20
 					- ### Step 2:
 						- And then run this `.\vboxmanage dhcpserver add --network=Mars --server-ip=10.38.1.1 --lower-ip=10.38.1.100 --upper-ip=10.38.1.110 --netmask=255.255.255.0 --enable` 
 					- ### Step 3:
-						- What this will do is add a DHCP server to the internal network that you made (in my case it was Mars). It will make a server IP of 10.38.1.1 and the lower and upper parts are the amount of IP addresses there would be in this case there can be 10 IP in this network. The main machine should have a IP of 10.38.1.100 and the vuln machine should have a IP of 10.38.1.101.
+						- What this will do is add a DHCP server to the internal network that you made (in my case it was Mars). It will make a server IP of 10.38.1.1 and the lower and upper parts are the amount of IP addresses there would be in this case there can be 10 IP in this network. The main machine should have a IP of 10.38.1.10 and the vuln machine should have a IP of 10.38.1.101.
 			- ## Step 4:
 				- Now you need to make sure that the VMs are isolated
 					- In order to do that you can fire up the main machine and try and ping other the internet by pinging something like google.com
 					- You can also check by pinging your the IP address of your host and see if it connects
 					- Now fire up the vuln machine and using the main machine ping its IP address and you should get a response this shows that the machines are isolated from your host machine
+
+Created for the setup of this home lab goes to a video created by NetworkChuck [Home Lab](https://www.youtube.com/watch?v=mvsiuLzpx2E)

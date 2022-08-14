@@ -33,7 +33,7 @@ time: 12:47
 					- But I didn't really know how dirbuster worked and I just left the options as default so the results of running dirbuster gave me a bunch of different dir and files that I didn't know how to look through. After this I thought there were no hidden dir or files and moved on to options.
 					- After that failure I thought about doing SQLi but what ever I tried it didn't seam to work
 					- So after being stuck for some time I thought about looking at some hints that were online and the first thing I saw was this
-					 ![500](dirbuster-fail.png)
+					![500](dirbuster-fail.png)
 					- After seeing this I just stopped and stared at it wishing I had just downloaded gobuster.
 					- After this fail I went back to dirbuster and tried again changing the options as well.
 					- This was the settings that put on dirbuster
@@ -45,4 +45,22 @@ time: 12:47
 			- We have the `license.txt` file but I feel like we will need to come back to this later.
 			- So we will look in to `fsocity.dic` file instead.
 				- .dic file is that of: I am not to sure my self. There isn't really anything that is explaining it in a simple term so I will just open it and see what it is. The way fileinfo.com explained it "Dictionary of words that can be referenced by word processors and other software programs; often used for spell-checking documents and providing correct spelling alternatives for misspelled words."
-				- OK um, opening `fsocity.dic` gives me a bunch of words its over 850,000 lines long, and the first thing that came to my mind is that its a wordlist. It might be used for finding the password to log in to the vuln machine because when you open `robots.txt` it also shows `User-agent: *` maybe that the user name of the vuln machine.
+				- OK um, opening `fsocity.dic` gives me a bunch of words its over 850,000 lines long, and the first thing that came to my mind is that its a wordlist. It might be used for finding the password to log in to the vuln machine because when you open `robots.txt` it also shows `User-agent: *` maybe that the user name of the vuln machine. But since port 22 is closed I am unable to use hydra to crack the username and password since it would need an ssh connection in order for hydra to work. Hydra is a tool that's mostly used to crack passwords remotely.
+		- ## Attempt 4:
+			- Since I am unable to use hydra to crack the username and password for the vuln machine I tried looking at trying something else.
+			- I then remembered that this web page was done using WordPress. I had learned what WordPress is and how it had so many vulnerabilities that specific tools were created to scan it as well. So I looked back at the dirbuster that I had ran and saw that there is a page that I can log in to but I would need the credentials and since I got that wordlist I should try cracking it.
+			![700](dirbuster-wp-login.png)
+			- So I got to learning how I could use hydra crack these credentials. 
+				- ### Attempt 1: Fail
+					- I needed some way to make the wordlist much smaller since having a wordlist with over 850,000 words would take for ever to go through using any credential cracking tool.
+					- I learned that there is a simple way to sort text files but I don't know if it applies to .dic files as well. The command that I ran to remove duplicates was `sort fsocity.dic | uniq -u`. I was expecting there to a big difference but I **only got a total of 10 lines** removed wow.
+					 ![500](sort-fail.png)
+				- ### Attempt 2:
+					- Since I couldn't reduce the size of the wordlist at all I will just proceed with the use of hydra and see how long it says it will take. If the ET is far to long I will go back to the drawing board and try to reduce the size of the wordlist some other way.
+					- From what I have seen in order to use hydra the way that I plan I will need the use of burpsuite and for that I will need to set that up.
+					- So in order for burpsuite to work you will need to set a proxy and the browser that I am using is Firefox
+					 ![700](Proxy-setup.png)
+					- After capturing the WordPress login page I should now be able to send it to the intruder and start doing payload attacks. I could just use burpsuite and use the wordlist to do the attack but I think it would be better to use hydra instead.
+					 ![600](burp-capture.png)
+					- I have researched on how to use hydra and I have not been able to figure out why, what I am doing isn't working. The only conclusion that I could come to was that in order to use hydra there needs to be an internet connection since I think it has to connect back to its servers in order for it to work. I still haven't found any other tool I could you to crack this password with out the need for an internet connection.
+					- I have just discovered another cracking tool called Ncrack. It might be able to work and its something I have to try out.

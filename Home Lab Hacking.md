@@ -19,7 +19,7 @@ time: 12:47
 				- https -  is the same as http but its more secure. Every traffic that's send through it is encrypted making the port that we use today for web pages.
 		- Since port 80 and 443 are open we should be able to connect to it trough a web page.
 		- When you type in the IP address of the vuln machine in the web browser on the main machine you will get this.
-		 ![500](Web-application.png)
+		 ![500](Assets/Web-application.png)
 		- ## Attempt 1: Success
 			- The first thing I did was try running all the commands that it tell me to run
 			- Its should be obvious that the last command `join` will be the next step. When you type in the command `join` it asks for an email. The first thing I checked was if it has a way to check the format what the of the email that is being input, and there is. If you input anything things that isn't in the format of an email address it says invalid input.

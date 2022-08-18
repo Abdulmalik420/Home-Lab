@@ -33,13 +33,13 @@ time: 12:47
 					- But I didn't really know how dirbuster worked and I just left the options as default so the results of running dirbuster gave me a bunch of different dir and files that I didn't know how to look through. After this I thought there were no hidden dir or files and moved on to options.
 					- After that failure I thought about doing SQLi but what ever I tried it didn't seam to work
 					- So after being stuck for some time I thought about looking at some hints that were online and the first thing I saw was this
-					![500](dirbuster-fail.png)
+					![500](Assets/dirbuster-fail.png)
 					- After seeing this I just stopped and stared at it wishing I had just downloaded gobuster.
 					- After this fail I went back to dirbuster and tried again changing the options as well.
 					- This was the settings that put on dirbuster
-					![500](dirbuster.png)
+					![500](Assets/dirbuster.png)
 					- And lo and behold `robots.txt` is right there and an extra file names `license.txt`
-					![500](dirbuster-result.png)
+					![500](Assets/dirbuster-result.png)
 					- And by opening `robots.txt` it gives you two files `fsocity.dic` and `key-1-of-3.txt`. If I had a more extensive wordlist I might have been able to go to `key-1-of-3.txt` with out the need for `robots.txt`. Opening `key-1-of-3.txt` gives me the first key. Great!
 		- ## Attempt 3: 
 			- We have the `license.txt` file but I feel like we will need to come back to this later.
@@ -49,19 +49,19 @@ time: 12:47
 		- ## Attempt 4:
 			- Since I am unable to use hydra to crack the username and password for the vuln machine I tried looking at trying something else.
 			- I then remembered that this web page was done using WordPress. I had learned what WordPress is and how it had so many vulnerabilities that specific tools were created to scan it as well. So I looked back at the dirbuster that I had ran and saw that there is a page that I can log in to but I would need the credentials and since I got that wordlist I should try cracking it.
-			![700](dirbuster-wp-login.png)
+			![700](Assets/dirbuster-wp-login.png)
 			- So I got to learning how I could use hydra crack these credentials. 
 				- ### Attempt 1: Fail
 					- I needed some way to make the wordlist much smaller since having a wordlist with over 850,000 words would take for ever to go through using any credential cracking tool.
 					- I learned that there is a simple way to sort text files but I don't know if it applies to .dic files as well. The command that I ran to remove duplicates was `sort fsocity.dic | uniq -u`. I was expecting there to a big difference but I **only got a total of 10 lines** removed wow.
-					 ![500](sort-fail.png)
+					 ![500](Assets/sort-fail.png)
 				- ### Attempt 2: Fail
 					- Since I couldn't reduce the size of the wordlist at all I will just proceed with the use of hydra and see how long it says it will take. If the ET is far to long I will go back to the drawing board and try to reduce the size of the wordlist some other way.
 					- From what I have seen in order to use hydra the way that I plan I will need the use of burpsuite and for that I will need to set that up.
 					- So in order for burpsuite to work you will need to set a proxy and the browser that I am using is Firefox
-					 ![700](Proxy-setup.png)
+					 ![700](Assets/Proxy-setup.png)
 					- After capturing the WordPress login page I should now be able to send it to the intruder and start doing payload attacks. I could just use burpsuite and use the wordlist to do the attack but I think it would be better to use hydra instead.
-					 ![600](burp-capture.png)
+					 ![600](Assets/burp-capture.png)
 					- I have researched on how to use hydra and I have not been able to figure out why, what I am doing isn't working. The only conclusion that I could come to was that in order to use hydra there needs to be an internet connection since I think it has to connect back to its servers in order for it to work. I still haven't found any other tool I could you to crack this password with out the need for an internet connection.
 					- I have just discovered another cracking tool called Ncrack. It might be able to work and its something I have to try out.
 					- Never mind I got Hydra working

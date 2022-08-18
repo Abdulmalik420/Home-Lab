@@ -14,8 +14,7 @@ time: 11:20
 				- One of the most popular machines in VulnHub is Mr-Robot: 1 by Leon Johnson which is the machine that I first used to practice. Since its the most popular on if I was stuck on something there would be many resources that I could use to lead me in the right direction.
 			- ## Step 2:
 				- You now want to make it so that both the main machine and the vuln machine are on the same network and not connected to the host network.
-				- To do this you would want to go to the setting of the machine and change the network settings to be ==Internal Network== and you can name it what ever you want. Both the main and the vuln machine should be in the same Internal Network
-				  ![700](Setting-Change.png)
+				- To do this you would want to go to the setting of the machine and change the network settings to be ==Internal Network== and you can name it what ever you want. Both the main and the vuln machine should be in the same Internal Network.
 			- ## Step 3:
 				- Now that you have put them in the same internal network you will need to assign an IP address to them.
 				- In order to do this you will need to set up an DHCP (Dynamic Host Configuration Protocol) Server

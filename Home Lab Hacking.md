@@ -9,7 +9,7 @@ time: 12:47
 	- Ones you have both of the machines running, you can run this nmap command `nmap -sT 10.38.100-110`. The IP should be the one that you put when you set up the internal network. The `-sT` command is used to scan TCP connect port using a 3 way handshake. 
 	- If you want to be a little more sneaky since using a 3 way handshake establishes a connection you can use `-sS` instead which will not establish a connection and just peace out once it receives a SNY ACK which is a response from the server.
 	- Once you scan it you should be able to see this
-	![500](Nmap-Scan.png)
+	![500](Assets/Nmap-Scan.png)
 	- As you can see these are the ports that available
 		- 22/tcp which is ssh (Secure Shell) which is a way to remotely connect to this server. As you can see its closed so we are unable to connect to in remotely
 		- 80/tcp which is http (Hypertext Transfer Protocol) which is the port used to send and receive web applications. And its open

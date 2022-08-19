@@ -1,9 +1,9 @@
 ---
-title: Home Lab Hacking
+title: Mr. Robot Hacking Lab
 date: 2022-08-11
 time: 12:47
 ---
-# Home Lap Hacking
+# Mr. Robot Hacking Lab
 - Now that we have the environment set up we can start hacking it
 	- One of the most important and basic tools for a hacker is that of ==nmap==
 	- Ones you have both of the machines running, you can run this nmap command `nmap -sT 10.38.100-110`. The IP should be the one that you put when you set up the internal network. The `-sT` command is used to scan TCP connect port using a 3 way handshake. 
